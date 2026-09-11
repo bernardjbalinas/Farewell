@@ -1,0 +1,737 @@
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #08090d;
+    color: #e6e1db;
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+}
+
+
+/* ==========================================
+   STAR BACKGROUND
+========================================== */
+
+#stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    animation: twinkle linear infinite;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+
+/* ==========================================
+   OPENING SCREEN
+========================================== */
+
+#opening-screen {
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #17151a 0%,
+            #08090d 65%
+        );
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    transition:
+        opacity 1.4s ease,
+        visibility 1.4s ease;
+}
+
+.opening-content {
+    padding: 30px;
+
+    animation: openingFade 2s ease;
+}
+
+@keyframes openingFade {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.small-text {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+
+    font-size: 0.7rem;
+
+    color: #8f8985;
+
+    margin-bottom: 22px;
+}
+
+.opening-content h1 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(3rem, 8vw, 6.5rem);
+
+    font-weight: 400;
+
+    margin-bottom: 25px;
+}
+
+.opening-description {
+    color: #aaa3a0;
+
+    line-height: 2;
+
+    margin-bottom: 40px;
+}
+
+#open-letter,
+#goodbye-button {
+
+    background: transparent;
+
+    border: 1px solid #6d6461;
+
+    color: #ddd6d1;
+
+    padding: 14px 32px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    font-size: 0.7rem;
+
+    cursor: pointer;
+
+    transition: 0.4s ease;
+}
+
+#open-letter:hover,
+#goodbye-button:hover {
+
+    background: #ded7d0;
+
+    color: #08090d;
+
+    border-color: #ded7d0;
+}
+
+.opening-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/* ==========================================
+   MAIN
+========================================== */
+
+main {
+    position: relative;
+    z-index: 2;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+
+/* ==========================================
+   HERO
+========================================== */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(68, 57, 59, 0.22),
+            transparent 50%
+        );
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.eyebrow {
+
+    text-transform: uppercase;
+
+    letter-spacing: 5px;
+
+    font-size: 0.65rem;
+
+    color: #817a77;
+
+    margin-bottom: 35px;
+}
+
+.hero h1 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(3rem, 8vw, 7rem);
+
+    line-height: 0.95;
+
+    font-weight: 400;
+
+    margin-bottom: 40px;
+}
+
+.hero h1 span {
+
+    display: block;
+
+    color: #938a86;
+
+    font-style: italic;
+
+    font-size: 0.68em;
+
+    margin-top: 20px;
+}
+
+#typewriter {
+
+    min-height: 40px;
+
+    color: #aaa29e;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.4rem;
+
+    font-style: italic;
+}
+
+
+/* ==========================================
+   SCROLL INDICATOR
+========================================== */
+
+.scroll-indicator {
+
+    margin-top: 90px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 15px;
+
+    opacity: 0.5;
+}
+
+.scroll-indicator span {
+
+    font-size: 0.6rem;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+.line {
+
+    width: 1px;
+
+    height: 60px;
+
+    background: linear-gradient(
+        to bottom,
+        #aaa,
+        transparent
+    );
+
+    animation: lineMove 2s infinite;
+}
+
+@keyframes lineMove {
+
+    0% {
+        opacity: 0.2;
+        transform: scaleY(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+
+    100% {
+        opacity: 0.2;
+        transform: scaleY(0.5);
+    }
+}
+
+
+/* ==========================================
+   GENERAL CONTENT
+========================================== */
+
+.content-wrapper {
+
+    width: min(90%, 760px);
+
+    margin: auto;
+
+    padding: 140px 0;
+}
+
+.section-number {
+
+    font-size: 0.65rem;
+
+    letter-spacing: 4px;
+
+    color: #766f6c;
+
+    margin-bottom: 30px;
+}
+
+.content-wrapper h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+
+    font-weight: 400;
+
+    margin-bottom: 50px;
+}
+
+.content-wrapper > p:not(.section-number) {
+
+    font-family: "Cormorant Garamond", serif;
+
+    color: #aaa29f;
+
+    font-size: 1.4rem;
+
+    line-height: 1.9;
+
+    margin-bottom: 25px;
+}
+
+
+/* ==========================================
+   LETTER
+========================================== */
+
+.letter-section {
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(255,255,255,0.015),
+            transparent
+        );
+}
+
+.letter-container {
+
+    width: min(92%, 780px);
+
+    margin: auto;
+
+    border-top: 1px solid #2f2c2d;
+    border-bottom: 1px solid #2f2c2d;
+
+    padding: 100px 0;
+}
+
+.letter-date {
+
+    text-transform: uppercase;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 4px;
+
+    color: #716a67;
+
+    margin-bottom: 50px;
+}
+
+.letter-container h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 3.5rem;
+
+    font-weight: 400;
+
+    margin-bottom: 50px;
+}
+
+.letter-body p {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.35rem;
+
+    line-height: 2;
+
+    color: #c0b9b5;
+
+    margin-bottom: 30px;
+}
+
+.letter-body em {
+
+    color: #ebe3df;
+}
+
+.signature {
+
+    margin-top: 80px;
+
+    font-family: "Cormorant Garamond", serif;
+}
+
+.signature p {
+
+    color: #8e8783;
+
+    font-style: italic;
+
+    margin-bottom: 10px;
+}
+
+.signature h3 {
+
+    font-size: 2rem;
+
+    font-weight: 400;
+}
+
+
+/* ==========================================
+   MEMORIES
+========================================== */
+
+.memories {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+}
+
+.memory-list {
+
+    margin-top: 70px;
+
+    border-top: 1px solid #282627;
+}
+
+.memory-item {
+
+    display: grid;
+
+    grid-template-columns: 60px 1fr;
+
+    gap: 20px;
+
+    padding: 35px 0;
+
+    border-bottom: 1px solid #282627;
+}
+
+.memory-item span {
+
+    color: #625c59;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 2px;
+}
+
+.memory-item p {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.45rem;
+
+    line-height: 1.6;
+
+    color: #aea6a2;
+}
+
+
+/* ==========================================
+   FINAL SECTION
+========================================== */
+
+.final-section {
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 20px;
+}
+
+.final-content {
+
+    max-width: 800px;
+}
+
+.final-content > p {
+
+    color: #807976;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.4rem;
+
+    font-style: italic;
+
+    margin-bottom: 35px;
+}
+
+.final-content h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-weight: 400;
+
+    font-size: clamp(3rem, 7vw, 6rem);
+
+    line-height: 1.1;
+
+    margin-bottom: 50px;
+}
+
+.divider {
+
+    color: #675f5d;
+
+    margin: 40px;
+
+    font-size: 1rem;
+}
+
+.final-message {
+
+    margin-bottom: 50px !important;
+}
+
+
+/* ==========================================
+   LAST MESSAGE
+========================================== */
+
+.last-message {
+
+    margin-top: 70px;
+
+    transition:
+        opacity 1.8s ease,
+        transform 1.8s ease;
+
+    padding: 40px 0;
+}
+
+.hidden-message {
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    pointer-events: none;
+}
+
+.show-message {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.last-message p {
+
+    font-family: "Cormorant Garamond", serif;
+
+    color: #938b87;
+
+    font-size: 1.3rem;
+
+    line-height: 1.8;
+
+    margin-bottom: 15px;
+}
+
+.last-message h3 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-weight: 400;
+
+    font-size: clamp(2rem, 5vw, 3.5rem);
+
+    margin: 35px 0;
+
+    color: #ded5cf;
+}
+
+.last-message span {
+
+    text-transform: uppercase;
+
+    letter-spacing: 6px;
+
+    color: #68615e;
+
+    font-size: 0.65rem;
+}
+
+
+/* ==========================================
+   SCROLL ANIMATIONS
+========================================== */
+
+.fade-section {
+
+    opacity: 0;
+
+    transform: translateY(50px);
+
+    transition:
+        opacity 1.4s ease,
+        transform 1.4s ease;
+}
+
+.fade-section.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    border-top: 1px solid #1d1b1c;
+
+    color: #514c4a;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-style: italic;
+
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        line-height: 1.05;
+    }
+
+    .letter-container {
+        padding: 70px 0;
+    }
+
+    .letter-body p {
+        font-size: 1.22rem;
+        line-height: 1.85;
+    }
+
+    .content-wrapper {
+        padding: 100px 0;
+    }
+
+    .memory-item {
+
+        grid-template-columns: 40px 1fr;
+
+        padding: 25px 0;
+    }
+
+}
